@@ -1,0 +1,21 @@
+name: elder-box
+version: 0.0.1
+inherits: wercker/ubuntu12.04-webessentials
+type: main
+platform: ubuntu@12.04
+description: precached Chromium environment for builds.
+keywords:
+  - chromium
+  - elderbrowser
+  - browser
+packages:
+  - chromium@38.0
+script: |
+  pushd ..
+  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  export PATH="$PATH":`pwd`/depot_tools
+  fetch chromium --nosvn=True
+  cd src
+  git checkout master
+  gclient sync --nohooks
+  popd
