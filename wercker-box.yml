@@ -11,7 +11,8 @@ keywords:
 packages:
     - chromium@38.0
 script: |
-    pushd ..
+    mkdir /chromium
+    pushd /chromium
     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
     export PATH="$PATH":`pwd`/depot_tools
     sudo apt-get update
